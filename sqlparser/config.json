@@ -59,7 +59,7 @@
     },
     
     "extra-cflags": "-std=c99 -I/workspace/sqlparser-rs/",
-    "extra-libs": "-L/workspace/sqlparser-rs/sqlparser/target/debug/ -lsqlparser",
+    "extra-libs": "-L/workspace/sqlparser-rs/target/debug/ -lsqlparser",
 
     "optimizer-dirs": [
         "optimizers"
