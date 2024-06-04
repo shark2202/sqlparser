@@ -22,6 +22,6 @@ RUN cd /workspace/sqlparser-rs && cargo clean && cargo build
 RUN cd /workerspace/php-zephir-parser && phpize && ./configure && make && make install
 
 RUN cd /workspace/sqlparser && php -dextension=zephir_parser zephir.phar fullclean && php -dextension=zephir_parser zephir.phar generate
-#RUN cd /workspace/sqlparser/ext && phpize --clean && phpize && ./configure && make && make install
+RUN cd /workspace/sqlparser/ext && phpize --clean && phpize && ./configure && make && make install
 
 #docker build -t sqlparser:0.1 .
