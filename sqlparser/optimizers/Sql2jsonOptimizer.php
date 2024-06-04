@@ -38,9 +38,7 @@ class Sql2jsonOptimizer extends OptimizerAbstract{
         $call->processExpectedReturn($context);
 
         $symbolVariable = $call->getSymbolVariable(true, $context);
-        $this->checkNotVariable($symbolVariable, $expression);
-
-
+        //$this->checkNotVariable($symbolVariable, $expression);
 
         $context->headersManager->add('sqlparser');
 
@@ -51,10 +49,10 @@ class Sql2jsonOptimizer extends OptimizerAbstract{
 
 
         $codes = <<<CODE
-        const char* __sql__ = Z_STRVAL({$resolvedParams[0]});
-        const char* __dialog__ = Z_STRVAL({$resolvedParams[1]});
+        const char* __sql__ = Z_STRVAL(sql);
+        const char* __dialog__ = Z_STRVAL(dialog);
         const char* __json = sql2json(__sql__, __dialog__);
-        ZVAL_STRING({$symbol}, __json);
+        ZVAL_STRING(&_json, __json);
         free(__json);
 CODE;
         $context->codePrinter->output($codes);
